@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     convert(text) {
-      this.convertedIds = [...text.matchAll(/\d{16,19}/g)].flat().filter((id, i, arr) => arr.indexOf(id) === i);
+      this.convertedIds = [...text.matchAll(/\d{16,19}/g)].flat().filter((id, i, arr) => arr.indexOf(id) === i).sort((a, b) => Number(a) - Number(b));
     },
     clear() {
       this.$refs.converter.value = '';
