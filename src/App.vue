@@ -40,7 +40,7 @@ function copy() {
 }
 
 function convert(text: string) {
-  state.ids = [...text.matchAll(/\d{15,18}/g)]
+  state.ids = [...text.matchAll(/\d{16,19}/g)]
     .flat()
     .filter((id, i, arr) => arr.indexOf(id) === i)
     .sort((a, b) => Number(a) - Number(b));
