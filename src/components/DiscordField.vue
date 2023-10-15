@@ -1,34 +1,44 @@
-<script>
+<script lang="ts">
+interface IData {
+  style: string[];
+  supportedStyles: string[];
+}
+
 export default {
-  name: 'DiscordField',
+  name: "DiscordField",
   props: {
     name: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
-    return {
-      supportedStyles: ['codeblock', 'inline'],
-      style: []
-    }
+    const data: IData = {
+      supportedStyles: ["codeblock", "inline"],
+      style: [],
+    };
+
+    return data;
   },
   mounted() {
-    this.style = Object.keys(this.$attrs).filter(attr => this.supportedStyles.includes(attr.toLowerCase())) || [];
+    this.style =
+      Object.keys(this.$attrs).filter((attr) =>
+        this.supportedStyles.includes(attr.toLowerCase()),
+      ) ?? [];
   },
   computed: {
     valueClass: function () {
       return {
-        'bg-tertiary rounded-[4px] mt-[6px]': this.style.includes('codeblock')
-      }
+        "bg-tertiary rounded-[4px] mt-[6px]": this.style.includes("codeblock"),
+      };
     },
-    fieldClass: function() {
+    fieldClass: function () {
       return {
-        '!w-[49%]': this.style.includes('inline')
-      }
-    }
-  }
-}
+        "!w-[49%]": this.style.includes("inline"),
+      };
+    },
+  },
+};
 </script>
 
 <template>

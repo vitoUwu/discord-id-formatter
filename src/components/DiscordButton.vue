@@ -1,42 +1,50 @@
-<script>
-import { OpenInNew } from 'mdue'
+<script lang="ts">
+import { Download } from 'lucide-vue-next'
 
 export default {
-  name: 'DiscordButton',
-  components: { OpenInNew },
+  name: "DiscordButton",
+  components: { Download },
   data() {
     return {
-      supportedStyles: ['primary', 'secondary', 'success', 'danger', 'link'],
-      style: null
-    }
+      supportedStyles: ["primary", "secondary", "success", "danger", "link"],
+      style: "",
+    };
   },
   mounted() {
-    this.style = Object.keys(this.$attrs).find(attr => this.supportedStyles.includes(attr.toLowerCase())) || 'secondary';
+    this.style =
+      Object.keys(this.$attrs).find((attr) =>
+        this.supportedStyles.includes(attr.toLowerCase()),
+      ) ?? "secondary";
   },
   computed: {
     styleClass: function () {
-      return {
-        '!bg-blurple': this.style === 'primary',
-        '!bg-secondary': this.style === 'secondary',
-        '!bg-success': this.style === 'success',
-        '!bg-danger': this.style === 'danger',
-        '!bg-secondary': this.style === 'link',
-        'bg-secondary': true
+      switch (this.style) {
+        case "primary":
+          return "bg-blurple hover:bg-blurple-hover disabled:bg-blurple-disabled";
+        case "success":
+          return "bg-success hover:bg-success-hover disabled:bg-success-disabled";
+        case "danger":
+          return "bg-danger hover:bg-danger-hover disabled:bg-danger-disabled";
+        default:
+          return "bg-secondary hover:bg-secondary-hover disabled:bg-secondary-disabled";
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <template>
-  <button v-bind:class="styleClass"
-    class="font-bold text-white my-[4px] mr-[8px] px-[16px] py-[2px] rounded-[3px] w-auto h-8">
-    <div class="whitespace-nowrap text-ellipsis overflow-hidden flex items-center justify-center text-center">
+  <button
+    v-bind:class="styleClass"
+    class="pop font-bold text-white flex items-center justify-center gap-2 px-4 py-[2px] rounded h-8 disabled:text-opacity-50 disabled:cursor-not-allowed"
+  >
+    <!-- <div
+      class="flex items-center justify-center gap-8 overflow-hidden text-center whitespace-nowrap text-ellipsis"
+    > -->
       <slot></slot>
-      <OpenInNew v-if="style === 'link'" class="ml-[8px]"></OpenInNew>
-    </div>
+      <template v-if="style==='link'">
+        <Download :size="18" />
+      </template>
+    <!-- </div> -->
   </button>
 </template>
-
-<style>
-</style>

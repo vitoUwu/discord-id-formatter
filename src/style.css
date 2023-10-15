@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --elastic-out: linear(0, 0.0039, 0.0156, 0.0352, 0.0625, 0.0977, 0.1407, 0.1914, 0.2499, 0.3164, 0.3906 62.5%, 0.5625, 0.7656, 1);
+  }
+
+  body {
+    background-color: #36393f;
+  }
+
+  html,
+  textarea {
+    -webkit-tap-highlight-color: transparent;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+  }
+
+  html::-webkit-scrollbar,
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
+
+  textarea {
+    line-break: anywhere;
+  }
+}
+
+@layer utilities {
+  .pop:not(:disabled) {
+    transition: scale 0.2s var(--elastic-out);
+  }
+
+  .pop:active:not(:disabled),
+  .pop:active:hover:not(:disabled) {
+    scale: 0.95;
+    transition: scale 0.2s ease;
+  }
+  
+  .pop:hover:not(:disabled) {
+    scale: 1.05;
+    transition: scale 0.2s ease;
+  }
+}
