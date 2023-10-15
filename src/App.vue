@@ -150,6 +150,7 @@ function onTextInput(event: Event) {
     <button
       class="flex items-center justify-center bg-black rounded-r-full shadow-sm h-9 w-9"
       @click="closePopup"
+      aria-label="Fechar"
     >
       <X class="pop" :size="18" />
     </button>
