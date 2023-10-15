@@ -1,11 +1,11 @@
 <template>
-<div class="flex w-full justify-start flex-wrap mb-5">
-  <slot></slot>
-</div>
+  <div class="flex flex-wrap justify-start w-full gap-2 mt-2 mb-5">
+    <slot></slot>
+  </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
-  name: 'DiscordActionRow'
-}
+  name: "DiscordActionRow",
+};
 </script>

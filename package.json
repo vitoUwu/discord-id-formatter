@@ -1,22 +1,24 @@
 {
-  "name": "idformatter",
-  "version": "0.0.0",
-  "private": true,
+  "name": "discord-id-formatter",
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "build": "vite build",
     "dev": "vite",
+    "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "autoprefixer": "^10",
-    "mdue": "^0.1.4",
-    "postcss": "^8",
-    "tailwindcss": "^3",
-    "vue": "^3.2.25"
+    "lucide-vue-next": "^0.287.0",
+    "vue": "^3.3.4"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^2.3.3",
-    "vite": "^2.9.16",
-    "vue-cli-plugin-tailwind": "~3.0.0"
+    "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vue-tsc": "^1.8.5"
   }
 }
