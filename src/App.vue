@@ -91,7 +91,10 @@ function convertFile() {
       return;
     }
 
-    fileInput.value!.value = result;
+    if (textInput.value) {
+      textInput.value.value = result;
+    }
+    fileInput.value!.value = "";
     convert(result);
     state.message = MESSAGES["DEFAULT"];
   };
